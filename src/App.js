@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="full-container">
-    <div className="App">
+      <div className="App">
         <div className="app-title">
           <h1>Star Wars Movies</h1>
         </div>
@@ -38,7 +38,7 @@ function App() {
             <FavoriteMoviesList favoriteMoviesList={favoriteMoviesList} setFavoriteMoviesList={setFavoriteMoviesList} />
           </div>
         </div>
-    </div>
+      </div>
     </div>
   );
 }
