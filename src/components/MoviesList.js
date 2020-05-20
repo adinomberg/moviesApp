@@ -1,9 +1,5 @@
-import React, {useCallback, useState} from "react";
+import React from "react";
 import MovieItem from './MovieItem';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';
 
 
@@ -65,7 +61,7 @@ export default ({ moviesList, setMoviesList, favoriteMoviesList, setFavoriteMovi
 
       return (
             <div className="no-movies-content">
-              <div>{noMoviesMessage}</div>
+              {noMoviesMessage}
             </div>
       );
     }

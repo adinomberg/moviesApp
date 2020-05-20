@@ -1,6 +1,4 @@
 import React from "react";
-import Tooltip from '@material-ui/core/Tooltip';
-
 
 export default ({ movie, movieId, favoriteMoviesList, setFavoriteMoviesList }) => {
     const deleteFavoriteMovie = (e, id) => {

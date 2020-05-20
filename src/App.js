@@ -18,7 +18,6 @@ function App() {
     axios.get(apiURL)
       .then(response => {
         setMoviesList(response.data.results);
-        console.log(response.data.results);
       })
       .catch(error => {
         console.log(error);

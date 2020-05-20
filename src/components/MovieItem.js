@@ -1,6 +1,4 @@
 import React, {useCallback} from "react";
-import Tooltip from '@material-ui/core/Tooltip';
-
 
 export default ({ movie, movieId, moviesList, setMoviesList, setFavoriteMoviesList }) => {
     const toggleChecked = useCallback(id => {
