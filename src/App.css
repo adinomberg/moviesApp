@@ -1,14 +1,143 @@
-.App {
+.full-container {
   font-family: 'Poppins', sans-serif;
+  padding: 10px;
+  top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0%;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(29, 28, 28, 0.801);
+    color: rgb(197, 195, 195);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-title h1 {
+  text-shadow: 1px 1px 4px rgba(203, 204, 188, 0.959);
+}
+
+.lists-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
+.movies-container {
+  margin-right: 50px;
+}
+
+.movies-container, .fav-movies-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  width: 300px;
+}
+
+.fav-movies-content-container {
+  text-align: center;
+}
+
+.movies-title-container, .movies-content-container,
+ .fav-movies-title-container, .fav-movies-content-container {
+   width: 250px;
+ }
+
+ .movies-title-container ,.fav-movies-title-container {
+   margin-bottom: 10px;
+ }
+
+ .movies-title-container h3, .fav-movies-title-container h3 {
+   text-align: center;
+   font-weight: bold;
+   text-decoration: underline;
+ }
+
+.movies-list-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+}
+
+.fav-movies-container {
+  margin-left: 50px;
+}
 
 .movies-list, .fav-movies-list {
   list-style: none;
+  padding-left: 0px;
+  background-color: gray;
+  border-color: darkgray;
+  border-radius: 6px;
+}
+
+.label-container-per-movie {
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.label-container-per-movie:hover {
+  background-color: rgba(169, 169, 169, 0.507);;
+}
+
+.container-per-movie {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+  width: 250px;
+  height: 50px;
+}
+
+.container-per-fav-movie {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+  height: 50px;
+}
+
+
+.checkbox-container {
+  margin-left: 20px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.state label {
+  display: none;
+}
+
+.movie-title-container {
+  margin-bottom: 0px;
+  margin-left: 0px;
+  font-weight: normal;
+  width: 75%;
+}
+
+.fav-movie-title {
+  padding-bottom: 7px;
+  margin-left: 20px;
+}
+
+.fav-movie-delete-button {
+  margin-right: 20px;
 }
 
 .delete-fav-movie-button {
@@ -29,4 +158,74 @@
 
 .delete-fav-movie-button:hover {
   background-color: rgba(169, 169, 169, 0.507);
+}
+
+.movies-button-container {
+  margin-top: 20px;
+}
+
+.movie-item {
+  height: 50px;
+}
+
+.movies-button {
+  height: 40px;
+  width: 230px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: thin;
+  color: black;
+  border-color: transparent;
+  cursor: pointer;
+  background-color: rgb(202, 184, 27);
+  box-shadow: 0px 2px 2px 0px rgba(120,116,120,0.59);
+}
+
+.movies-button:focus {
+  display: none;
+}
+
+.movies-button:hover {
+  background-color: rgba(252, 255, 65, 0.74)
+}
+
+/* ----------- iPad ----------- */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) {
+    .full-container {
+      height: 100vh;
+    }
+}
+
+/* ----------- Smartphones ----------- */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 736px) { 
+    .lists-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .movies-container {
+      margin-right: 0px;
+    }
+    .fav-movies-container {
+      margin-left: 0px;
+    }
+
+    .movies-title-container, .movies-content-container,
+ .fav-movies-title-container, .fav-movies-content-container {
+   width: 230px;
+ }
+ .movies-list-container form {
+  width: 230px;
+}
+.container-per-movie {
+  width: 230px;
+}
 }

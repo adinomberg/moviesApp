@@ -1,70 +1,72 @@
-import React, { useCallback } from "react";
+import React, {useCallback, useState} from "react";
+import MovieItem from './MovieItem';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import Checkbox from '@material-ui/core/Checkbox';
+import StarIcon from '@material-ui/icons/Star';
 
 
-const MoviesList = ({ moviesList, setMoviesList, favoriteMoviesList, setFavoriteMoviesList }) => {
+export default ({ moviesList, setMoviesList, favoriteMoviesList, setFavoriteMoviesList }) => {
+      
+    return (
+      <div className="movies-container">
+        <div className="movies-title-container">
+        <h3>All Movies</h3>
+        </div>
+        <div className="movies-content-container">
+        {moviesList.length !== 0  ? 
+        <MoviesToShow moviesList={moviesList} setMoviesList={setMoviesList}
+         setFavoriteMoviesList={setFavoriteMoviesList}/> 
+         : <NoMoviesToShow />}
+         </div>
+      </div>
+    );
+  }
+
+  const MoviesToShow = ({ moviesList, setMoviesList, setFavoriteMoviesList }) => {
+
 
     const handleSubmitFavMovies = (e) => {
-        e.preventDefault();
-        const filterMovies = moviesList.filter((movie) => {
-            return movie.checked === true;
-        });
-        setFavoriteMoviesList(filterMovies);
-    }
+      e.preventDefault();
+      const filterMovies = moviesList.filter(movie => {
+          return movie.checked === true;
+      });
+      setFavoriteMoviesList(filterMovies);
+  }
 
-    const toggleChecked = useCallback(id => {
-        setMoviesList(moviesList.map((movie, movieId) => ({
-            ...movie,
-            checked: movieId === id ? !movie.checked : movie.checked
-        })));
-    }, [setMoviesList, moviesList]);
+  const showMoviesList = moviesList.map((movie, movieId) => 
+  <li key={movieId} className="movie-item">
+    <MovieItem movie={movie} movieId={movieId} moviesList={moviesList} 
+    setMoviesList={setMoviesList} setFavoriteMoviesList={setFavoriteMoviesList} />
+  </li>
+  );
   
-    const showMoviesList = moviesList.map((movie, movieId) => {
-      return (
-        <li key={movieId} className="movie-item">
-          <div className="container-per-movie">
-          <div className="checkbox-container">
-        <input type="checkbox" id={`check-item-${movieId}`} value={movieId} onClick={() => toggleChecked(movieId)}/>
-         </div>
-        <div className="movie-title-container">
-        <label htmlFor={`check-item-${movieId}`} >{movie.title}</label>
-         </div>
-          </div>
-        </li>
-      );
-    });
 
-    const renderMoviesList = () => {
-        return (
+    return (
             <div className="movies-list-container">
                 <form onSubmit={e => handleSubmitFavMovies(e)}>
               <ul className="movies-list">
                 {showMoviesList}
               </ul>
               <div className="movies-button-container">
-            <button type="submit">
-                Set as my favorite movies!
+            <button type="submit" className="movies-button">
+                Set as my favorite movies! <StarIcon />
             </button>
          </div>
               </form>
             </div>
-        );
-    }
-
-    const renderNoMoviesToShow = () => {
-        return (
-            <div className="no-movies-content">
-              No movies to show...
-            </div>
-        );
-    }
-  
-    return (
-      <div className="movies-container">
-        <h4>All Movies</h4>
-        {moviesList.length !== 0  && renderMoviesList()}
-        {moviesList.length === 0 && renderNoMoviesToShow()}
-      </div>
     );
   }
+    
 
-  export default MoviesList;
+    const NoMoviesToShow = () => {
+      const noMoviesMessage = 'No movies to show...';
+
+      return (
+            <div className="no-movies-content">
+              <div>{noMoviesMessage}</div>
+            </div>
+      );
+    }
+
